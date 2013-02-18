@@ -10,8 +10,8 @@ The Team has managed to produce the next version of the maven-gae-plugin.
   <tbody style="vertical-align:top">
     <tr style="vertical-align:top">
       <td><ul>
- <li>Version 0.9.6<br/>
- <li>Version 0.9.5<br/>
+ <li>Version 0.9.6</li>
+ <li>Version 0.9.5</li>
  <li>Version 0.9.4<br/>
    Supports a way of adding arbitrary flags.</li>
  <li>Version 0.9.3<br/>
@@ -31,8 +31,8 @@ The Team has managed to produce the next version of the maven-gae-plugin.
 ...
 </td>
 <td><ul>
- <li>Version 1.7.5<br/>
- <li>Version 1.7.4<br/>
+ <li>Version 1.7.5</li>
+ <li>Version 1.7.4</li>
  <li>Version 1.7.0<br/>
    Targets Google App Engine 1.7.0<br/>
    Updates the datanucleus-appengine dependency to 2.0.1.1</li>
@@ -88,5 +88,46 @@ You can also find the following archetypes for your applications:
         -DarchetypeVersion=0.9.4 -DgroupId=com.myapp.test -DartifactId=testapp
 
 
-##Source
-Source is kept in [github](https://github.com/maven-gae-plugin/maven-gae-plugin).
+##Sample Maven Plugin Configuration
+
+```xml
+<properties>
+     <gae.version>1.7.5</gae.version>
+     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+     <gae.home>
+         ${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}
+     </gae.home>
+<propertiess>
+
+
+<build>
+    <plugin>
+        <groupId>net.kindleit</groupId>
+        <artifactId>maven-gae-plugin</artifactId>
+        <version>0.9.5</version>
+        <configuration>
+            <sdkDir>${gae.home}</sdkDir>
+            <!-- Add credentials to ~/.m2/settings.xml <id>appengine-credentials</id> -->
+                <serverId>appengine-credentials</serverId>
+                <splitJars>true</splitJars>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>install-server-jar</id>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>unpack</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>deploy</id>
+                    <goals>
+                        <goal>deploy</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
+
