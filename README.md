@@ -1,9 +1,6 @@
-Maven GAE Plugin
-================
+#Maven GAE Plugin
 
-Google Project Page
--------------------
-
+##Google Project Page
 The Team has managed to produce the next version of the maven-gae-plugin. 
 
 <table>
@@ -13,6 +10,8 @@ The Team has managed to produce the next version of the maven-gae-plugin.
   <tbody style="vertical-align:top">
     <tr style="vertical-align:top">
       <td><ul>
+ <li>Version 0.9.6<br/>
+ <li>Version 0.9.5<br/>
  <li>Version 0.9.4<br/>
    Supports a way of adding arbitrary flags.</li>
  <li>Version 0.9.3<br/>
@@ -32,6 +31,8 @@ The Team has managed to produce the next version of the maven-gae-plugin.
 ...
 </td>
 <td><ul>
+ <li>Version 1.7.5<br/>
+ <li>Version 1.7.4<br/>
  <li>Version 1.7.0<br/>
    Targets Google App Engine 1.7.0<br/>
    Updates the datanucleus-appengine dependency to 2.0.1.1</li>
@@ -53,21 +54,15 @@ The Team has managed to produce the next version of the maven-gae-plugin.
 </table>
 
 
-Maven Generated site information
---------------------------------
-
+##Maven Generated site information
 You can find a copy of the maven generated site information [here](http://www.kindleit.net/maven_gae_plugin/) and [here](http://maven-gae-plugin.github.com/maven-gae-plugin/).
 
 
-Issues
-------
-
+##Issues
 Issues are tracked in [github](https://github.com/maven-gae-plugin/maven-gae-plugin/issues).
 
 
-Boilerplate / Archetypes
-------------------------
-
+##Boilerplate / Archetypes
 [JAppStart](http://code.google.com/p/jappstart) is a very complete jump start for java GAE developers. [Spring Roo](http://www.springsource.org/roo) is also a great tool for setting up all the boilerplate code.
 
 You can also find the following archetypes for your applications:
@@ -93,7 +88,5 @@ You can also find the following archetypes for your applications:
         -DarchetypeVersion=0.9.4 -DgroupId=com.myapp.test -DartifactId=testapp
 
 
-Source
-------
-
+##Source
 Source is kept in [github](https://github.com/maven-gae-plugin/maven-gae-plugin).
