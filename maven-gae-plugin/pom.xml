@@ -24,7 +24,6 @@
 	</build>
 
   <dependencies>
-
     <dependency>
       <groupId>net.kindleit</groupId>
       <artifactId>gae-runtime</artifactId>

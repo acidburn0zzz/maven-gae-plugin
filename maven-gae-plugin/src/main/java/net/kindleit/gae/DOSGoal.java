@@ -33,6 +33,7 @@ public class DOSGoal extends EngineGoalBase {
     getLog().info("Updating Project DoS Protection Service...");
     runAppCfg("update_dos", appDir);
   }
+  
 }
 
 

@@ -29,4 +29,5 @@ public class RollbackGoal extends EngineGoalBase {
     getLog().info("Rollingback Last Update...");
     runAppCfg("rollback", appDir);
   }
+  
 }

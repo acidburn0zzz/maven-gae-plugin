@@ -40,8 +40,9 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Contextualizable;
 
 import com.google.appengine.tools.admin.AppCfg;
 
-/** Base MOJO class for working with the Google App Engine SDK.
- *
+/**
+ * Base MOJO class for working with the Google App Engine SDK.
+ * 
  * @author rhansen@kindleit.net
  */
 public abstract class EngineGoalBase extends AbstractMojo implements Contextualizable {
@@ -50,80 +51,86 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
 
   private static final String GAE_PROPS = "gae.properties";
 
-  private static final String INTERRUPTED_EXCEPTION =
-      "Interrupted waiting for process supervisor thread to finish";
+  private static final String INTERRUPTED_EXCEPTION = "Interrupted waiting for process supervisor thread to finish";
 
   protected static final String[] ARG_TYPE = new String[0];
 
   /**
    * Plexus container, needed to manually lookup components.
-   *
-   * To be able to use Password Encryption
-   * http://maven.apache.org/guides/mini/guide-encryption.html
+   * 
+   * To be able to use Password Encryption http://maven.apache.org/guides/mini/guide-encryption.html
    */
   protected PlexusContainer container;
 
-  /** The Maven settings reference.
-   *
+  /**
+   * The Maven settings reference.
+   * 
    * @parameter expression="${settings}"
    * @required
    * @readonly
    */
   protected Settings settings;
 
-  /** The character encoding scheme to be applied interacting with the SDK.
-   * Sent as the --compile_encoding flag.
-   *
+  /**
+   * The character encoding scheme to be applied interacting with the SDK. Sent as the --compile_encoding flag.
+   * 
    * @parameter expression="${encoding}" default-value="${project.build.sourceEncoding}"
    * @since 0.8.3
    */
   protected String encoding;
 
-  /** Overrides where the Project War Directory is located.
-   *
+  /**
+   * Overrides where the Project War Directory is located.
+   * 
    * @parameter expression="${project.build.directory}/${project.build.finalName}"
    * @required
    */
   protected String appDir;
 
-  /** Specifies where the Google App Engine SDK is located.
-   *
-   * @parameter expression="${gae.home}" default-value="${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}"
+  /**
+   * Specifies where the Google App Engine SDK is located.
+   * 
+   * @parameter expression="${gae.home}" default-value=
+   *            "${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}"
    * @required
    */
   protected String sdkDir;
 
-  /** Split large jar files (> 10M) into smaller fragments.
-   *
+  /**
+   * Split large jar files (> 10M) into smaller fragments.
+   * 
    * @parameter expression="${gae.deps.split}" default-value="false"
    */
   protected boolean splitJars;
 
-  /** The username to use. Will prompt if omitted.
-   *
+  /**
+   * The username to use. Will prompt if omitted.
+   * 
    * @parameter expression="${gae.email}"
    * @deprecated use maven settings.xml/server/username and "serverId" parameter
    */
   @Deprecated
   protected String emailAccount;
 
-  /** The server id in maven settings.xml to use for emailAccount(username)
-   * and password when connecting to GAE.
-   *
+  /**
+   * The server id in maven settings.xml to use for emailAccount(username) and password when connecting to GAE.
+   * 
    * If password present in settings "--passin" is set automatically.
-   *
+   * 
    * @parameter expression="${gae.serverId}"
    */
   protected String serverId;
 
-  /** The server to connect to.
-   *
+  /**
+   * The server to connect to.
+   * 
    * @parameter expression="${gae.server}"
    */
   protected String uploadServer;
 
   /**
    * The app id. If defined, it overrides the application name defined in the appengine-web.xml.
+   * 
    * @parameter expression="${gae.appId}"
    * @since 0.9.3
    */
@@ -131,57 +138,66 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
 
   /**
    * The app version. If defined, it overrides the application major version defined in the appengine-web.xml.
+   * 
    * @parameter expression="${gae.appVersion}"
    * @since 0.9.3
    */
   protected String appVersion;
 
-  /** Overrides the Host header sent with all RPCs.
-   *
+  /**
+   * Overrides the Host header sent with all RPCs.
+   * 
    * @parameter expression="${gae.host}"
    */
   protected String hostString;
 
-  /** Do not delete temporary directory used in uploading.
-   *
+  /**
+   * Do not delete temporary directory used in uploading.
+   * 
    * @parameter expression="${gae.keepTemps}" default-value="false"
    */
   protected boolean keepTempUploadDir;
 
-  /** Always read the login password from stdin.
-   *
+  /**
+   * Always read the login password from stdin.
+   * 
    * @parameter expression="${gae.passin}" default-value="false"
    */
   protected boolean passIn;
 
-  /** Tell AppCfg to use a proxy.
-   *
+  /**
+   * Tell AppCfg to use a proxy.
+   * 
    * By default will use first active proxy in maven settings.xml
-   *
+   * 
    * @parameter expression="${gae.proxy}"
    */
   protected String proxy;
 
-  /** Decides whether to wait after the server is started or to return the
-   * execution flow to the user.
-   *
+  /**
+   * Decides whether to wait after the server is started or to return the execution flow to the user.
+   * 
    * @parameter expression="${gae.wait}" default-value="false"
    */
   protected boolean wait;
 
-  /** Port to listen for stop requests on.
-   *
+  /**
+   * Port to listen for stop requests on.
+   * 
    * @parameter expression="${gae.monitor.port}" default-value="8081"
    */
   protected int monitorPort;
 
-  /** Key to provide when making stop requests.
-   *
+  /**
+   * Key to provide when making stop requests.
+   * 
    * @parameter expression="${gae.monitor.key}" default-value="monitor.${project.artifactId}"
    */
   protected String monitorKey;
 
-  /** Arbitrary list of Goal Arguments to pass along to the app engine task.
+  /**
+   * Arbitrary list of Goal Arguments to pass along to the app engine task.
+   * 
    * @since 0.9.4
    * @parameter
    */
@@ -198,7 +214,6 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
     }
   }
 
-
   @Override
   public void contextualize(final Context context) throws ContextException {
     container = (PlexusContainer) context.get(PlexusConstants.PLEXUS_KEY);
@@ -213,15 +228,14 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
     }
   }
 
-  /** Passes command to the Google App Engine AppCfg runner.
-   *
+  /**
+   * Passes command to the Google App Engine AppCfg runner.
+   * 
    * @param command command to run through AppCfg
    * @param commandArguments arguments to the AppCfg command.
    * @throws MojoExecutionException If {@link #ensureSystemProperties()} fails
    */
-  protected final void runAppCfg(final String command,
-      final String ... commandArguments) throws MojoExecutionException {
-
+  protected final void runAppCfg(final String command, final String... commandArguments) throws MojoExecutionException {
     final List<String> args = new ArrayList<String>();
     args.addAll(getAppCfgArgs());
     args.add(command);
@@ -234,18 +248,18 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
     getLog().debug("execute AppCfg " + args.toString());
 
     if (hasServerSettings()) {
-      forkPasswordExpectThread(args.toArray(ARG_TYPE),
-          decryptPassword(settings.getServer(serverId).getPassword()));
+      forkPasswordExpectThread(args.toArray(ARG_TYPE), decryptPassword(settings.getServer(serverId).getPassword()));
       return;
     }
 
     AppCfg.main(args.toArray(ARG_TYPE));
-
   }
 
-  /** Groups alterations to System properties for the proper execution
-   * of the actual GAE code.
-   * @throws MojoExecutionException When the gae.home variable cannot be set. */
+  /**
+   * Groups alterations to System properties for the proper execution of the actual GAE code.
+   * 
+   * @throws MojoExecutionException When the gae.home variable cannot be set.
+   */
   protected void ensureSystemProperties() throws MojoExecutionException {
     // explicitly specify SDK root, as auto-discovery fails when
     // appengine-tools-api.jar is loaded from Maven repo, not SDK
@@ -263,23 +277,21 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
           gaeProperties.getProperty("home_invalid"));
     }
 
-
     // hack for getting appengine-tools-api.jar on a runtime classpath
     // (KickStart checks java.class.path system property for classpath entries)
     final String classpath = System.getProperty("java.class.path");
     final String toolsJar = sdkDir + "/lib/appengine-tools-api.jar";
     if (!classpath.contains(toolsJar)) {
-      System.setProperty("java.class.path",
-          classpath + File.pathSeparator + toolsJar);
+      System.setProperty("java.class.path", classpath + File.pathSeparator + toolsJar);
     }
   }
 
-  /** Generate all common Google AppEngine Task Parameters for use in all the
-   * goals.
-   *
+  /**
+   * Generate all common Google AppEngine Task Parameters for use in all the goals.
+   * 
    * @return List of arguments to add.
    */
-  protected List<String> getAppCfgArgs () {
+  protected List<String> getAppCfgArgs() {
     final List<String> args = getCommonArgs();
 
     addEmailOption(args);
@@ -342,7 +354,8 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
             } catch (final IOException e) {
               getLog().error("Unable to enter password", e);
             }
-          }}), true));
+          }
+        }), true));
 
         try {
           AppCfg.main(args);
@@ -365,12 +378,10 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
   private String decryptPassword(final String password) {
     if (isNotEmpty(password)) {
       try {
-        final Class<?> securityDispatcherClass = container.getClass()
-            .getClassLoader().loadClass(SECURITY_DISPATCHER_CLASS_NAME);
-        final Object securityDispatcher = container.lookup(
-            SECURITY_DISPATCHER_CLASS_NAME, "maven");
-        final Method decrypt = securityDispatcherClass.getMethod("decrypt",
-            String.class);
+        final Class<?> securityDispatcherClass = container.getClass().getClassLoader()
+            .loadClass(SECURITY_DISPATCHER_CLASS_NAME);
+        final Object securityDispatcher = container.lookup(SECURITY_DISPATCHER_CLASS_NAME, "maven");
+        final Method decrypt = securityDispatcherClass.getMethod("decrypt", String.class);
 
         return (String) decrypt.invoke(securityDispatcher, password);
 
@@ -384,8 +395,7 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
 
   private void addEmailOption(final List<String> args) {
     if (hasServerSettings() && emailAccount == null) {
-      addStringOption(args, "--email=",
-          settings.getServer(serverId).getUsername());
+      addStringOption(args, "--email=", settings.getServer(serverId).getUsername());
       if (settings.getServer(serverId).getPassword() != null) {
         // Force GAE tools to read from System.in instead of System.console()
         passIn = true;
@@ -401,21 +411,18 @@ public abstract class EngineGoalBase extends AbstractMojo implements Contextuali
     } else if (hasServerSettings()) {
       final Proxy activCfgProxy = settings.getActiveProxy();
       if (activCfgProxy != null) {
-        addStringOption(args, "--proxy=",
-            activCfgProxy.getHost() + ":" + activCfgProxy.getPort());
+        addStringOption(args, "--proxy=", activCfgProxy.getHost() + ":" + activCfgProxy.getPort());
       }
     }
   }
 
-  private final void addBooleanOption(final List<String> args, final String key,
-      final boolean var) {
+  private final void addBooleanOption(final List<String> args, final String key, final boolean var) {
     if (var) {
       args.add(key);
     }
   }
 
-  private final void addStringOption(final List<String> args, final String key,
-      final String var) {
+  private final void addStringOption(final List<String> args, final String key, final String var) {
     if (isNotEmpty(var)) {
       args.add(key + var);
     }
