@@ -34,6 +34,7 @@ public class IndexGoal extends EngineGoalBase {
     getLog().info("Updating Project Indexes...");
     runAppCfg("update_indexes", appDir);
   }
+  
 }
 
 

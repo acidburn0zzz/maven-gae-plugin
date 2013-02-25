@@ -38,6 +38,7 @@ public class UpdateGoal extends EngineGoalBase {
     getLog().info("Updating Google App Engine Server...");
     runAppCfg("update", appDir);
   }
+  
 }
 
 

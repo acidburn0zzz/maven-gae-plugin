@@ -34,6 +34,7 @@ public class CronGoal extends EngineGoalBase {
     getLog().info("Updating Project Cron...");
     runAppCfg("update_cron", appDir);
   }
+  
 }
 
 

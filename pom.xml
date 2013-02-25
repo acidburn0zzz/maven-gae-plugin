@@ -81,7 +81,7 @@
     <maven.plugin.version>2.2.1</maven.plugin.version>
     <github.global.server>github</github.global.server>
     <junit.version>3.8.2</junit.version>
-    <gae.version>1.7.3</gae.version>
+    <gae.version>1.7.5</gae.version>
     <ant.version>1.7.1</ant.version>
     <gae.base>
       ${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}
