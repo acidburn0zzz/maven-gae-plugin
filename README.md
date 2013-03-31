@@ -33,6 +33,7 @@ The Team has managed to produce the next version of the maven-gae-plugin.
     </td>
     <td valign="top">
     <ul>
+       <li>Version 1.7.6</li>
        <li>Version 1.7.5</li>
        <li>Version 1.7.4</li>
        <li>Version 1.7.0<br/>
@@ -95,7 +96,7 @@ You can also find the following archetypes for your applications:
 
 ```xml
 <properties>
-     <gae.version>1.7.5</gae.version>
+     <gae.version>1.7.6</gae.version>
      <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
      <gae.home>
          ${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}
