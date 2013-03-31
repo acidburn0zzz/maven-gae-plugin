@@ -58,12 +58,11 @@
 
 
 ##Maven Configuration
-
-* How to setup the plugin with **any** Google App Engine version.
+* How to setup the `maven-gae-plugin` in the `pom.xml` so that it can use **any** Google App Engine version stated.
 
   ```xml
   <properties>
-      <!-- GAE Plugin -->
+      <!-- GAE Plugin ((almost) Any GAE Version) -->
       <gae.version>1.7.6</gae.version>
       <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
       <gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
