@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>gae:run</title>
+  </properties>
+  <body>
+    <section name="gae:run">
+      <p><strong>Full name</strong>:</p>
+      <p>net.kindleit:maven-gae-plugin:0.9.6-SNAPSHOT:run</p>
+      <p><strong>Description</strong>:</p>
+      <div>Runs the WAR project locally on the Google App Engine development
+server. You can specify jvm flags via the jvmFlags in the
+configuration section.</div>
+      <p><strong>Attributes</strong>:</p>
+      <ul>
+        <li>Requires a Maven project to be executed.</li>
+        <li>Requires dependency resolution of artifacts in scope: <code>runtime</code>.</li>
+        <li>Since version: <code>0.5.8</code>.</li>
+        <li>Binds by default to the lifecycle phase: <code>pre-integration-test</code>.</li>
+        <li>Invokes the execution of the lifecycle phase <code>package</code> prior to executing itself.</li>
+      </ul>
+      <subsection name="Required Parameters">
+        <table border="0">
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><strong><a href="#appDir">appDir</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Overrides where the Project War Directory is located.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#sdkDir">sdkDir</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Specifies where the Google App Engine SDK is located.<br/><strong>Default value is</strong>: <code>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</code>.</td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Optional Parameters">
+        <table border="0">
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><strong><a href="#address">address</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Address to bind to.<br/><strong>Default value is</strong>: <code>0.0.0.0</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#appId">appId</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.9.3</code></td>
+            <td>The app id. If defined, it overrides the application name defined
+in the appengine-web.xml.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#appVersion">appVersion</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.9.3</code></td>
+            <td>The app version. If defined, it overrides the application major
+version defined in the appengine-web.xml.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#disableUpdateCheck">disableUpdateCheck</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Do not check for new SDK versions.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#emailAccount">emailAccount</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td><strong>Deprecated.</strong> use maven settings.xml/server/username and "serverId" parameter<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#encoding">encoding</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.8.3</code></td>
+            <td>The character encoding scheme to be applied interacting with the
+SDK. Sent as the --compile_encoding flag.<br/><strong>Default value is</strong>: <code>${project.build.sourceEncoding}</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#goalArguments">goalArguments</a></strong></td>
+            <td><code>List</code></td>
+            <td><code>0.9.4</code></td>
+            <td>Arbitrary list of Goal Arguments to pass along to the app engine
+task.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#hostString">hostString</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Overrides the Host header sent with all RPCs.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#javaAgent">javaAgent</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Optional javaAgent parameter prepended to the jvmFalgs.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#jvmFlags">jvmFlags</a></strong></td>
+            <td><code>List</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Arbitrary list of JVM Flags to send to the KickStart task.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#keepTempUploadDir">keepTempUploadDir</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Do not delete temporary directory used in uploading.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#monitorKey">monitorKey</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Key to provide when making stop requests.<br/><strong>Default value is</strong>: <code>monitor.${project.artifactId}</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#monitorPort">monitorPort</a></strong></td>
+            <td><code>int</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Port to listen for stop requests on.<br/><strong>Default value is</strong>: <code>8081</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#noVerifyFlag">noVerifyFlag</a></strong></td>
+            <td><code>Boolean</code></td>
+            <td><code>0.9.6</code></td>
+            <td>Optional noVerify parameter which overrides any default setting of
+this JVM flag.<br/><strong>Default value is</strong>: <code>null</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#passIn">passIn</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Always read the login password from stdin.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#port">port</a></strong></td>
+            <td><code>int</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Port to run in.<br/><strong>Default value is</strong>: <code>8080</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#proxy">proxy</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Tell AppCfg to use a proxy. By default will use first active proxy
+in maven settings.xml<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#serverId">serverId</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>The server id in maven settings.xml to use for
+emailAccount(username) and password when connecting to GAE. If
+password present in settings "--passin" is set automatically.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#splitJars">splitJars</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Split large jar files (&gt; 10M) into smaller fragments.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#uploadServer">uploadServer</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>The server to connect to.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#wait">wait</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Decides whether to wait after the server is started or to return
+the execution flow to the user.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Parameter Details">
+        <p><strong><a name="address">address</a>:</strong></p>
+        <div>Address to bind to.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.address}</code></li>
+          <li><strong>Default</strong>: <code>0.0.0.0</code></li>
+        </ul><hr/><p><strong><a name="appDir">appDir</a>:</strong></p>
+        <div>Overrides where the Project War Directory is located.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${project.build.directory}/${project.build.finalName}</code></li>
+        </ul><hr/><p><strong><a name="appId">appId</a>:</strong></p>
+        <div>The app id. If defined, it overrides the application name defined
+in the appengine-web.xml.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.9.3</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.appId}</code></li>
+        </ul><hr/><p><strong><a name="appVersion">appVersion</a>:</strong></p>
+        <div>The app version. If defined, it overrides the application major
+version defined in the appengine-web.xml.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.9.3</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.appVersion}</code></li>
+        </ul><hr/><p><strong><a name="disableUpdateCheck">disableUpdateCheck</a>:</strong></p>
+        <div>Do not check for new SDK versions.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.disableUpdateCheck}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul><hr/><p><strong><a name="emailAccount">emailAccount</a>:</strong></p>
+        <div><strong>Deprecated.</strong> use maven settings.xml/server/username and "serverId" parameter</div>
+        <div>The username to use. Will prompt if omitted.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.email}</code></li>
+        </ul><hr/><p><strong><a name="encoding">encoding</a>:</strong></p>
+        <div>The character encoding scheme to be applied interacting with the
+SDK. Sent as the --compile_encoding flag.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.8.3</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${encoding}</code></li>
+          <li><strong>Default</strong>: <code>${project.build.sourceEncoding}</code></li>
+        </ul><hr/><p><strong><a name="goalArguments">goalArguments</a>:</strong></p>
+        <div>Arbitrary list of Goal Arguments to pass along to the app engine
+task.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.List</code></li>
+          <li><strong>Since</strong>: <code>0.9.4</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+        </ul><hr/><p><strong><a name="hostString">hostString</a>:</strong></p>
+        <div>Overrides the Host header sent with all RPCs.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.host}</code></li>
+        </ul><hr/><p><strong><a name="javaAgent">javaAgent</a>:</strong></p>
+        <div>Optional javaAgent parameter prepended to the jvmFalgs.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.javaAgent}</code></li>
+        </ul><hr/><p><strong><a name="jvmFlags">jvmFlags</a>:</strong></p>
+        <div>Arbitrary list of JVM Flags to send to the KickStart task.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.List</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+        </ul><hr/><p><strong><a name="keepTempUploadDir">keepTempUploadDir</a>:</strong></p>
+        <div>Do not delete temporary directory used in uploading.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.keepTemps}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul><hr/><p><strong><a name="monitorKey">monitorKey</a>:</strong></p>
+        <div>Key to provide when making stop requests.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.monitor.key}</code></li>
+          <li><strong>Default</strong>: <code>monitor.${project.artifactId}</code></li>
+        </ul><hr/><p><strong><a name="monitorPort">monitorPort</a>:</strong></p>
+        <div>Port to listen for stop requests on.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>int</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.monitor.port}</code></li>
+          <li><strong>Default</strong>: <code>8081</code></li>
+        </ul><hr/><p><strong><a name="noVerifyFlag">noVerifyFlag</a>:</strong></p>
+        <div>Optional noVerify parameter which overrides any default setting of
+this JVM flag.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.Boolean</code></li>
+          <li><strong>Since</strong>: <code>0.9.6</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.noVerify}</code></li>
+          <li><strong>Default</strong>: <code>null</code></li>
+        </ul><hr/><p><strong><a name="passIn">passIn</a>:</strong></p>
+        <div>Always read the login password from stdin.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.passin}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul><hr/><p><strong><a name="port">port</a>:</strong></p>
+        <div>Port to run in.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>int</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.port}</code></li>
+          <li><strong>Default</strong>: <code>8080</code></li>
+        </ul><hr/><p><strong><a name="proxy">proxy</a>:</strong></p>
+        <div>Tell AppCfg to use a proxy. By default will use first active proxy
+in maven settings.xml</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.proxy}</code></li>
+        </ul><hr/><p><strong><a name="sdkDir">sdkDir</a>:</strong></p>
+        <div>Specifies where the Google App Engine SDK is located.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${gae.home}</code></li>
+          <li><strong>Default</strong>: <code>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</code></li>
+        </ul><hr/><p><strong><a name="serverId">serverId</a>:</strong></p>
+        <div>The server id in maven settings.xml to use for
+emailAccount(username) and password when connecting to GAE. If
+password present in settings "--passin" is set automatically.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.serverId}</code></li>
+        </ul><hr/><p><strong><a name="splitJars">splitJars</a>:</strong></p>
+        <div>Split large jar files (&gt; 10M) into smaller fragments.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.deps.split}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul><hr/><p><strong><a name="uploadServer">uploadServer</a>:</strong></p>
+        <div>The server to connect to.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.server}</code></li>
+        </ul><hr/><p><strong><a name="wait">wait</a>:</strong></p>
+        <div>Decides whether to wait after the server is started or to return
+the execution flow to the user.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${gae.wait}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul>
+      </subsection>
+    </section>
+  </body>
+</document>

@@ -1,0 +1,27 @@
+Invoking Maven for the goals: [org.apache.maven.plugins:maven-javadoc-plugin:2.7:javadoc] with no properties
+
+M2_HOME=/usr/share/maven3
+MAVEN_OPTS=null
+JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre/..
+JAVA_OPTS=null
+
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Archetype - GAE-JSP 0.9.5
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> maven-javadoc-plugin:2.7:javadoc (default-cli) @ gae-archetype-jsp >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ gae-archetype-jsp ---
+[INFO] 
+[INFO] <<< maven-javadoc-plugin:2.7:javadoc (default-cli) @ gae-archetype-jsp <<<
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.7:javadoc (default-cli) @ gae-archetype-jsp ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.262s
+[INFO] Finished at: Tue Oct 30 17:38:08 CDT 2012
+[INFO] Final Memory: 11M/301M
+[INFO] ------------------------------------------------------------------------

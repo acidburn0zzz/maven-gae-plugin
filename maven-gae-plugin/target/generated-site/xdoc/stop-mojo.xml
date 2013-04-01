@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>gae:stop</title>
+  </properties>
+  <body>
+    <section name="gae:stop">
+      <p><strong>Full name</strong>:</p>
+      <p>net.kindleit:maven-gae-plugin:0.9.6-SNAPSHOT:stop</p>
+      <p><strong>Description</strong>:</p>
+      <div>Stops a running instance of the Google App Engine development
+server. This is intended to be included in your project's POM and
+runs in the post-integration-test phase.</div>
+      <p><strong>Attributes</strong>:</p>
+      <ul>
+        <li>Requires a Maven project to be executed.</li>
+        <li>Since version: <code>0.5.8</code>.</li>
+        <li>Binds by default to the lifecycle phase: <code>post-integration-test</code>.</li>
+      </ul>
+      <subsection name="Required Parameters">
+        <table border="0">
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><strong><a href="#monitorKey">monitorKey</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Key to provide when making stop requests.<br/><strong>Default value is</strong>: <code>monitor.${project.artifactId}</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#monitorPort">monitorPort</a></strong></td>
+            <td><code>int</code></td>
+            <td><code>0.5.8</code></td>
+            <td>Port to listen for stop requests on.<br/><strong>Default value is</strong>: <code>8081</code>.</td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Parameter Details">
+        <p><strong><a name="monitorKey">monitorKey</a>:</strong></p>
+        <div>Key to provide when making stop requests.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${gae.monitor.key}</code></li>
+          <li><strong>Default</strong>: <code>monitor.${project.artifactId}</code></li>
+        </ul><hr/><p><strong><a name="monitorPort">monitorPort</a>:</strong></p>
+        <div>Port to listen for stop requests on.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>int</code></li>
+          <li><strong>Since</strong>: <code>0.5.8</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${gae.monitor.port}</code></li>
+          <li><strong>Default</strong>: <code>8081</code></li>
+        </ul>
+      </subsection>
+    </section>
+  </body>
+</document>

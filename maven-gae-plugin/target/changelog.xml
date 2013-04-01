@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<changelog>
+  
+<changeset datePattern="yyyyMMdd HH:mm:ss z" start="20130302 11:45:00 CST" end="20130402 12:45:00 CDT">
+	<changelog-entry>
+		<date pattern="yyyy-MM-dd">2013-04-01</date>
+		<time pattern="HH:mm:ss">10:07:10</time>
+		<author><![CDATA[Rodolfo Hansen <rhansen@kitsd.com>]]></author>
+		<file>
+			<name>maven-gae-plugin/src/main/java/net/kindleit/gae/StartGoal.java</name>
+			<revision>c4bb8f15955cf41c345f50cf1d9521cad77bd91c</revision>
+		</file>
+		<msg><![CDATA[Fix noVerify parameter documentation]]></msg>
+	</changelog-entry>
+	<changelog-entry>
+		<date pattern="yyyy-MM-dd">2013-04-01</date>
+		<time pattern="HH:mm:ss">10:00:23</time>
+		<author><![CDATA[Rodolfo Hansen <rhansen@kitsd.com>]]></author>
+		<file>
+			<name>maven-gae-plugin/src/main/java/net/kindleit/gae/StartGoal.java</name>
+			<revision>27367f50738b1e2f928a79f468007fe7ba57647a</revision>
+		</file>
+		<msg><![CDATA[Avoid IF nesting, keeping the backwards compaitibility of the origina patch (2acb32ec7b8fa8) and still allows people to cleanly override the -noverify behavior]]></msg>
+	</changelog-entry>
+	<changelog-entry>
+		<date pattern="yyyy-MM-dd">2013-04-01</date>
+		<time pattern="HH:mm:ss">09:20:24</time>
+		<author><![CDATA[Rodolfo Hansen <rhansen@kitsd.com>]]></author>
+		<file>
+			<name>maven-gae-plugin/src/main/java/net/kindleit/gae/StartGoal.java</name>
+			<revision>0c2f4906e85bc3c9e4ab5de746b126130aaa8013</revision>
+		</file>
+		<msg><![CDATA[Revert "Problem: GAE 1.7.5 doesn't run with certain javaAgents"
+
+This reverts commit 2acb32ec7b8fa8ff2a7239ac55a24fe37f19dc18.]]></msg>
+	</changelog-entry>
+	<changelog-entry>
+		<date pattern="yyyy-MM-dd">2013-03-21</date>
+		<time pattern="HH:mm:ss">10:34:34</time>
+		<author><![CDATA[Nathan Toone <nathan@toonetown.com>]]></author>
+		<file>
+			<name>maven-gae-plugin/src/main/java/net/kindleit/gae/StartGoal.java</name>
+			<revision>2acb32ec7b8fa8ff2a7239ac55a24fe37f19dc18</revision>
+		</file>
+		<msg><![CDATA[Problem: GAE 1.7.5 doesn't run with certain javaAgents
+
+As described at https://code.google.com/p/appengine-maven-plugin/issues/detail?id=10, there can be problems with adding the "noverify" flag when also specifying a javaAgent to the server. Instead, we provide an option which will allow you to *not* add this flag, if it's causing problems.]]></msg>
+	</changelog-entry>
+	<changelog-entry>
+		<date pattern="yyyy-MM-dd">2013-03-21</date>
+		<time pattern="HH:mm:ss">10:32:43</time>
+		<author><![CDATA[Nathan Toone <nathan@toonetown.com>]]></author>
+		<file>
+			<name>maven-gae-plugin/src/main/java/net/kindleit/gae/runner/BackgroundKickStartRunner.java</name>
+			<revision>1e5ba1395fb3a64a9b01543b5d093d655be7a3ac</revision>
+		</file>
+		<msg><![CDATA[Problem: gae:start not forking
+
+Since the string that is printed out by the local appengine server has changed, we need to watch for it instead. We change the string to "is running" to be a bit more robust in the future as well.]]></msg>
+	</changelog-entry>
+</changeset>
+
+</changelog>
