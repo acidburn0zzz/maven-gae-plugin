@@ -14,6 +14,8 @@
  */
 package net.kindleit.gae;
 
+import static java.lang.Boolean.TRUE;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -95,6 +97,14 @@ public class StartGoal extends EngineGoalBase {
    */
   protected boolean disableUpdateCheck;
 
+  /**
+   * Optional noVerify parameter to not add noVerify flag. This is
+   *
+   * @parameter expression="${gae.noVerify}" default-value="null"
+   * @since 0.9.6
+   */
+  protected Boolean noVerifyFlag;
+
   /** Arbitrary list of JVM Flags to send to the KickStart task.
    *
    * @parameter
@@ -119,8 +129,10 @@ public class StartGoal extends EngineGoalBase {
     if (goalArguments != null) {
       arguments.addAll(goalArguments);
     }
-    if(javaAgent != null) {
+    if (noVerifyFlagApplies()) {
       arguments.add("--jvm_flag=-noverify");
+    }
+    if(javaAgent != null) {
       arguments.add("--jvm_flag=-javaagent:" + javaAgent);
     }
     if (jvmFlags != null) {
@@ -132,6 +144,15 @@ public class StartGoal extends EngineGoalBase {
 
     runKickStart("com.google.appengine.tools.development.DevAppServerMain",
         arguments.toArray(new String[]{}));
+  }
+
+  /** the -noverify jvm flag is determined by the presence of the javaAgent parameter OR it can be overriden
+   * and set explicitly.
+   * @return true when (noVerify == TRUE) OR (javaAgent is set AND noVerify is not set)
+   */
+  private boolean noVerifyFlagApplies() {
+    return TRUE.equals(noVerifyFlag)
+        || (noVerifyFlag == null && javaAgent != null);
   }
 
   /** Passes command to the Google App Engine KickStart runner.
