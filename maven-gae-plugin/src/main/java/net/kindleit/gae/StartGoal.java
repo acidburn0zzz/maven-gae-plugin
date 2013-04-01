@@ -98,7 +98,7 @@ public class StartGoal extends EngineGoalBase {
   protected boolean disableUpdateCheck;
 
   /**
-   * Optional noVerify parameter to not add noVerify flag. This is
+   * Optional noVerify parameter which overrides any default setting of this JVM flag.
    *
    * @parameter expression="${gae.noVerify}" default-value="null"
    * @since 0.9.6
