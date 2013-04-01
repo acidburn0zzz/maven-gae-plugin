@@ -175,7 +175,7 @@
 
 
 ##Maven Generated site information
-You can find a copy of the maven generated site information [here](http://sites.kitsd.com/maven_gae_plugin/) and [here](http://maven-gae-plugin.github.com/maven-gae-plugin/).
+You can find a copy of the maven generated site information [here](http://sites.kitsd.com/maven-gae-plugin/) and [here](http://maven-gae-plugin.github.com/maven-gae-plugin/).
 
 
 ##Boilerplate / Archetypes
