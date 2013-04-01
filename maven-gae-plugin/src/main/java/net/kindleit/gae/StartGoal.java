@@ -107,14 +107,6 @@ public class StartGoal extends EngineGoalBase {
    */
   protected String javaAgent;
 
-  /** 
-   * Optional javaAgentSkipNoVerify parameter to not add noverify flag.  Only
-   * honored if javaAgent is set.
-   *
-   * @parameter expression="${gae.javaAgentSkipNoVerify}" default-value=false
-   */
-  protected boolean javaAgentSkipNoVerify;
-
   @Override
   public void execute() throws MojoExecutionException, MojoFailureException {
     final List<String> arguments = new ArrayList<String>();
@@ -128,9 +120,7 @@ public class StartGoal extends EngineGoalBase {
       arguments.addAll(goalArguments);
     }
     if(javaAgent != null) {
-		if (!javaAgentSkipNoVerify) {
-      	  arguments.add("--jvm_flag=-noverify");
-	    }
+      arguments.add("--jvm_flag=-noverify");
       arguments.add("--jvm_flag=-javaagent:" + javaAgent);
     }
     if (jvmFlags != null) {
