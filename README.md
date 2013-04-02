@@ -172,7 +172,16 @@
           </executions>
       </plugin>
   ```
+* Using this plugins latest snapshot add the `pluginRepositories` element to the pom.
 
+  ```xml
+  <pluginRepositories>
+     <pluginRepository>
+       <id>sonatype.snapshots</id>
+       <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+     </pluginRepository>
+  </pluginRepositories>
+  ```
 
 ##Maven Generated site information
 You can find a copy of the maven generated site information [here](http://sites.kitsd.com/maven-gae-plugin/) and [here](http://maven-gae-plugin.github.com/maven-gae-plugin/).
