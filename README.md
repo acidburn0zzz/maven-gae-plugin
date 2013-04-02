@@ -71,11 +71,11 @@
   <plugin>
       <groupId>net.kindleit</groupId>
       <artifactId>maven-gae-plugin</artifactId>
-      <version>9.5</version>
+      <version>0.9.5</version>
       <configuration>
           <unpackVersion>${gae.version}</unpackVersion>
-          <serverId>appengine.google.com</serverId>
           <appDir>${webappDirectory}</appDir>
+          <sdkDir>${gae.home}</sdkDir>
           
           <!-- Add credentials to ~/.m2/settings.xml <id>appengine-credentials</id> -->
           <serverId>appengine-credentials</serverId>
