@@ -215,3 +215,6 @@ You can also find the following archetypes for your applications:
 
 ##Issues
 Issues are tracked in [github](https://github.com/maven-gae-plugin/maven-gae-plugin/issues).
+
+##Build Server
+* [TeamCity Build Server](http://teamcity.gonevertical.org/project.html?projectId=project12)
