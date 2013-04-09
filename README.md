@@ -183,8 +183,8 @@
   </pluginRepositories>
   ```
 
-##Maven Integration Testing
-Using the GAE Runner for integration tests with Selenium. 
+##Maven Configuration for Integration Testing
+* Using the GAE Runner for integration tests with Selenium. 
 
     ```xml
     <properties>
