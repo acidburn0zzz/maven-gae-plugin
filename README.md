@@ -183,6 +183,107 @@
   </pluginRepositories>
   ```
 
+##Maven Integration Testing
+Using the GAE Runner for integration tests with Selenium. 
+
+    ```xml
+    <properties>
+        <!-- GAE Plugin ((almost) Any GAE Version) -->
+        <gae.version>1.7.6</gae.version>
+        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+        <gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
+        
+        <!-- These are setup by default. -->
+        <gae.wait>false</gae.wait>
+        <gae.stop.port>8081</gae.stop.port>
+        <gae.port>8888</gae.port>
+        <gae.address>127.0.0.1</gae.address>
+    </properties>
+    
+    <plugin>
+        <groupId>net.kindleit</groupId>
+        <artifactId>maven-gae-plugin</artifactId>
+        <!-- Use the snapshot until we get 9.6 released. -->
+        <version>0.9.6-SNAPSHOT</version>
+        <configuration>
+            <unpackVersion>${gae.version}</unpackVersion>
+            <appDir>${webappDirectory}</appDir>
+            <sdkDir>${gae.home}</sdkDir>
+            
+            <!-- Add credentials to ~/.m2/settings.xml <id>appengine-credentials</id> -->
+            <serverId>appengine-credentials</serverId>
+            <splitJars>true</splitJars>
+        </configuration>
+        <executions>
+            <execution>
+                <id>start-gae</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                    <goal>unpack</goal>
+                    <goal>start</goal>
+                </goals>
+            </execution>
+            <execution>
+                <id>stop-gae</id>
+                <phase>post-integration-test</phase>
+                <goals>
+                    <goal>stop</goal>
+                </goals>
+            </execution>
+        </executions>
+        <dependencies>
+            <!-- Google App Engine API -->
+            <dependency>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-api-1.0-sdk</artifactId>
+                <version>${gae.version}</version>
+            </dependency>
+            <!-- Google App Engine Runtime Dependencies -->
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-jta_1.1_spec</artifactId>
+                <version>1.1.1</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-jpa_3.0_spec</artifactId>
+                <version>1.1.1</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.jdo</groupId>
+                <artifactId>jdo2-api</artifactId>
+                <version>2.3-eb</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-core</artifactId>
+                <version>1.1.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.appengine.orm</groupId>
+                <artifactId>datanucleus-appengine</artifactId>
+                <version>1.0.10</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-jpa</artifactId>
+                <version>1.1.5</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- App Engine Runtime Dependencies -->
+            <dependency>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-tools-sdk</artifactId>
+                <version>${gae.version}</version>
+            </dependency>
+        </dependencies>
+    </plugin>
+    ```
+
 ##Maven Generated site information
 You can find a copy of the maven generated site information [here](http://sites.kitsd.com/maven-gae-plugin/) and [here](http://maven-gae-plugin.github.com/maven-gae-plugin/).
 
