@@ -157,7 +157,7 @@
           </configuration>
           <executions>
               <execution>
-                  <id>install-server-jar</id>
+                  <id>unpack</id>
                   <phase>validate</phase>
                   <goals>
                       <goal>unpack</goal>
@@ -216,10 +216,16 @@
         </configuration>
         <executions>
             <execution>
+                <id>unpack</id>
+                <phase>validate</phase>
+                <goals>
+                    <goal>unpack</goal>
+                </goals>
+            </execution>
+            <execution>
                 <id>start-gae</id>
                 <phase>pre-integration-test</phase>
                 <goals>
-                    <goal>unpack</goal>
                     <goal>start</goal>
                 </goals>
             </execution>
