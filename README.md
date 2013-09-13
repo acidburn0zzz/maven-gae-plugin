@@ -33,8 +33,8 @@
     <td valign="top">
     <ul>
        <li><b>Any</b> Version See Configuration Below</li>
-       <li>Version 1.7.7</li>
-       <li>Version 1.7.6</li>
+       <li>Version 1.8.4</li>
+       <li>Version 1.8.3</li>
        <li>Version 1.7.0<br/>
          Targets Google App Engine 1.7.0<br/>
          Updates the datanucleus-appengine dependency to 2.0.1.1</li>
