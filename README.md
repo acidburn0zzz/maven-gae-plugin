@@ -137,7 +137,7 @@
        <gae.home>
            ${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}
        </gae.home>
-  <propertiess>
+  <properties>
   
   <plugin>
       <groupId>net.kindleit</groupId>
